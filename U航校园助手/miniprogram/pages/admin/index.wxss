@@ -1,0 +1,99 @@
+.admin-head {
+  padding: 32rpx;
+}
+
+.admin-head .muted {
+  margin-top: 12rpx;
+  line-height: 1.5;
+}
+
+.tab-row {
+  margin: 24rpx 0 18rpx;
+}
+
+.audit-card {
+  margin-bottom: 20rpx;
+  padding: 26rpx;
+}
+
+.audit-meta {
+  display: flex;
+  justify-content: space-between;
+  gap: 18rpx;
+  color: #697386;
+  font-size: 23rpx;
+}
+
+.audit-title {
+  margin-top: 16rpx;
+  color: #17202f;
+  font-size: 30rpx;
+  font-weight: 700;
+  line-height: 1.35;
+}
+
+.audit-content {
+  display: -webkit-box;
+  overflow: hidden;
+  margin-top: 12rpx;
+  color: #30394a;
+  font-size: 27rpx;
+  line-height: 1.55;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 4;
+}
+
+.audit-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10rpx;
+  margin-top: 16rpx;
+}
+
+.audit-tags text {
+  padding: 6rpx 12rpx;
+  border-radius: 999rpx;
+  color: #5d6878;
+  background: #f3f6f8;
+  font-size: 22rpx;
+}
+
+.audit-actions {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12rpx;
+  margin-top: 22rpx;
+}
+
+.audit-btn {
+  min-height: 70rpx;
+  padding: 0 8rpx;
+  font-size: 24rpx;
+}
+
+.audit-btn.pass {
+  color: #ffffff;
+  background: #1f7a5b;
+}
+
+.audit-btn.reject {
+  color: #8a5a08;
+  background: #fff3cf;
+}
+
+.audit-btn.delete {
+  color: #a0312a;
+  background: #ffeceb;
+}
+
+.audit-btn.minor {
+  color: #32445f;
+  background: #edf0f4;
+}
+
+.loading {
+  padding: 28rpx 0;
+  color: #697386;
+  font-size: 24rpx;
+  text-align: center;
+}

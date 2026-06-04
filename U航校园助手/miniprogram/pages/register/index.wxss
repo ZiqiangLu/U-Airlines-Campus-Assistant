@@ -1,0 +1,51 @@
+.register-page {
+  padding-bottom: 48rpx;
+}
+
+.register-head {
+  padding: 32rpx;
+}
+
+.register-head .muted {
+  margin-top: 12rpx;
+  font-size: 26rpx;
+  line-height: 1.55;
+}
+
+.form-block {
+  margin-top: 26rpx;
+}
+
+.form-label {
+  margin-bottom: 12rpx;
+  color: #17202f;
+  font-size: 27rpx;
+  font-weight: 700;
+}
+
+.gender-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14rpx;
+}
+
+.gender-item {
+  min-height: 84rpx;
+  border: 1rpx solid #dce2ea;
+  border-radius: 8px;
+  color: #3f4858;
+  background: #ffffff;
+  font-size: 28rpx;
+  line-height: 84rpx;
+  text-align: center;
+}
+
+.gender-item.active {
+  border-color: #1f7a5b;
+  color: #ffffff;
+  background: #1f7a5b;
+}
+
+.submit-btn {
+  margin-top: 34rpx;
+}

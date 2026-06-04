@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "物品交易",
+  "enablePullDownRefresh": true,
+  "usingComponents": {
+    "post-card": "../../components/post-card/post-card"
+  }
+}

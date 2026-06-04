@@ -1,0 +1,140 @@
+page {
+  min-height: 100%;
+  background: #f6f7fb;
+  color: #202531;
+  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+}
+
+view,
+text,
+button,
+input,
+textarea {
+  box-sizing: border-box;
+}
+
+button {
+  border: 0;
+  border-radius: 8px;
+  font-size: 28rpx;
+  line-height: 1.2;
+}
+
+button::after {
+  border: 0;
+}
+
+.page {
+  min-height: 100vh;
+  padding: 24rpx;
+}
+
+.panel {
+  background: #ffffff;
+  border: 1rpx solid #ebedf2;
+  border-radius: 8px;
+  box-shadow: 0 8rpx 24rpx rgba(20, 30, 50, 0.04);
+}
+
+.muted {
+  color: #697386;
+}
+
+.small {
+  font-size: 24rpx;
+}
+
+.title {
+  font-size: 36rpx;
+  font-weight: 700;
+  color: #17202f;
+}
+
+.section-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 28rpx 0 16rpx;
+}
+
+.section-title text:first-child {
+  font-size: 32rpx;
+  font-weight: 700;
+}
+
+.btn-primary {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 84rpx;
+  color: #ffffff;
+  background: #1f7a5b;
+}
+
+.btn-secondary {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 76rpx;
+  color: #1f7a5b;
+  background: #e8f5ef;
+}
+
+.btn-danger {
+  color: #a0312a;
+  background: #ffeceb;
+}
+
+.chip-row {
+  display: flex;
+  gap: 16rpx;
+  overflow-x: auto;
+  padding: 4rpx 0 8rpx;
+  white-space: nowrap;
+}
+
+.chip {
+  flex: 0 0 auto;
+  padding: 14rpx 22rpx;
+  border: 1rpx solid #dce2ea;
+  border-radius: 999rpx;
+  color: #3f4858;
+  background: #ffffff;
+  font-size: 26rpx;
+}
+
+.chip.active {
+  border-color: #1f7a5b;
+  color: #ffffff;
+  background: #1f7a5b;
+}
+
+.empty {
+  padding: 72rpx 32rpx;
+  color: #697386;
+  text-align: center;
+  background: #ffffff;
+  border: 1rpx dashed #ccd4df;
+  border-radius: 8px;
+}
+
+.input,
+.textarea {
+  width: 100%;
+  border: 1rpx solid #dce2ea;
+  border-radius: 8px;
+  background: #ffffff;
+  color: #202531;
+  font-size: 28rpx;
+}
+
+.input {
+  height: 84rpx;
+  padding: 0 24rpx;
+}
+
+.textarea {
+  min-height: 220rpx;
+  padding: 22rpx 24rpx;
+  line-height: 1.55;
+}

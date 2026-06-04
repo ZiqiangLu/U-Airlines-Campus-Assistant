@@ -1,0 +1,120 @@
+<view class="page bottle-page">
+  <view class="hero panel">
+    <view>
+      <view class="title">缘分抽签</view>
+      <view class="hero-sub">投递一张缘分签，或按主题抽取学习生活同行。</view>
+    </view>
+    <button class="gender-btn" bindtap="chooseGender">
+      {{user.gender ? genderNames[user.gender] : '选性别'}}
+    </button>
+  </view>
+
+  <view class="draw-card panel">
+    <view class="draw-head">
+      <view>
+        <view class="block-title">随机抽签</view>
+        <view class="muted small">
+          {{user.gender === 'female' ? '女生每天 2 次' : '男生每天 1 次'}}，今日剩余 {{drawState.remaining || 0}} 次
+        </view>
+      </view>
+      <button class="draw-btn" loading="{{drawing}}" bindtap="drawBottle">抽一签</button>
+    </view>
+
+    <view wx:if="{{currentBottle}}" class="bottle-result">
+      <view class="bottle-meta">
+        <text>{{currentBottle.categoryName}}</text>
+        <text>{{currentBottle.userGenderName}}</text>
+        <text>{{currentBottle.timeText}}</text>
+      </view>
+      <view class="bottle-title">{{currentBottle.title}}</view>
+      <view class="bottle-content">{{currentBottle.content}}</view>
+      <view class="bottle-tools">
+        <text>{{currentBottle.targetGenderName}}</text>
+        <text data-id="{{currentBottle._id}}" bindtap="report">举报</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="section-title">
+    <text>投递缘分签</text>
+  </view>
+
+  <view class="throw-form panel">
+    <view class="form-label">主题</view>
+    <view class="chip-row">
+      <view
+        wx:for="{{categories}}"
+        wx:key="key"
+        class="chip {{selectedCategory === item.key ? 'active' : ''}}"
+        data-key="{{item.key}}"
+        bindtap="selectCategory"
+      >
+        {{item.name}}
+      </view>
+    </view>
+
+    <view class="form-label">谁可见</view>
+    <view class="target-grid">
+      <view
+        wx:for="{{targetOptions}}"
+        wx:key="key"
+        class="target-item {{targetGender === item.key ? 'active' : ''}}"
+        data-key="{{item.key}}"
+        bindtap="selectTarget"
+      >
+        {{item.name}}
+      </view>
+    </view>
+
+    <input
+      class="input"
+      maxlength="40"
+      placeholder="标题，可选"
+      value="{{title}}"
+      data-field="title"
+      bindinput="onInput"
+    />
+    <textarea
+      class="textarea bottle-textarea"
+      maxlength="500"
+      placeholder="写下你想投递的内容，学习同行、就餐同行、运动同行都可以"
+      value="{{content}}"
+      data-field="content"
+      bindinput="onInput"
+    />
+    <button class="btn-primary throw-btn" loading="{{throwing}}" bindtap="throwBottle">投递</button>
+  </view>
+
+  <view class="section-title">
+    <text>主题同行</text>
+  </view>
+  <view class="chip-row filter-row">
+    <view
+      wx:for="{{filterCategories}}"
+      wx:key="key"
+      class="chip {{filterCategory === item.key ? 'active' : ''}}"
+      data-key="{{item.key}}"
+      bindtap="selectFilter"
+    >
+      {{item.name}}
+    </view>
+  </view>
+
+  <view wx:if="{{latest.length}}">
+    <view wx:for="{{latest}}" wx:key="_id" class="bottle-card panel">
+      <view class="bottle-meta">
+        <text>{{item.categoryName}}</text>
+        <text>{{item.userGenderName}}</text>
+        <text>{{item.timeText}}</text>
+      </view>
+      <view class="bottle-title">{{item.title}}</view>
+      <view class="bottle-content">{{item.content}}</view>
+      <view class="bottle-tools">
+        <text>{{item.targetGenderName}}</text>
+        <text data-id="{{item._id}}" bindtap="report">举报</text>
+      </view>
+    </view>
+  </view>
+  <view wx:elif="{{!loading}}" class="empty">还没有可见的缘分签。</view>
+  <view wx:if="{{loading}}" class="loading">加载中...</view>
+</view>

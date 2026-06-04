@@ -1,0 +1,90 @@
+.profile-card {
+  display: flex;
+  align-items: center;
+  gap: 24rpx;
+  padding: 32rpx;
+}
+
+.profile-avatar {
+  flex: 0 0 auto;
+  width: 96rpx;
+  height: 96rpx;
+  border-radius: 50%;
+  color: #ffffff;
+  background: #32445f;
+  font-size: 34rpx;
+  font-weight: 700;
+  line-height: 96rpx;
+  text-align: center;
+}
+
+.profile-info {
+  min-width: 0;
+}
+
+.verify-badge {
+  display: inline-flex;
+  margin-top: 12rpx;
+  padding: 8rpx 14rpx;
+  border-radius: 999rpx;
+  color: #8a5a08;
+  background: #fff3cf;
+  font-size: 22rpx;
+}
+
+.verify-badge.verified {
+  color: #1f7a5b;
+  background: #e8f5ef;
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  margin-top: 22rpx;
+  padding: 26rpx 0;
+  text-align: center;
+}
+
+.stat-value {
+  color: #17202f;
+  font-size: 36rpx;
+  font-weight: 700;
+}
+
+.stat-label {
+  margin-top: 8rpx;
+  color: #697386;
+  font-size: 24rpx;
+}
+
+.action-list {
+  overflow: hidden;
+  margin-top: 22rpx;
+}
+
+.action-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 112rpx;
+  padding: 0 28rpx;
+  border-bottom: 1rpx solid #edf0f4;
+  color: #17202f;
+  font-size: 29rpx;
+}
+
+.action-item:last-child {
+  border-bottom: 0;
+}
+
+.action-item.admin {
+  color: #1f7a5b;
+}
+
+.notice {
+  margin-top: 28rpx;
+  padding: 0 8rpx;
+  color: #8a5a08;
+  font-size: 24rpx;
+  line-height: 1.6;
+}

@@ -1,0 +1,44 @@
+<view class="page">
+  <view class="confession-hero panel">
+    <view class="hero-top">
+      <view>
+        <view class="title">航校表白墙</view>
+        <view class="hero-sub">表白、祝福和校园墙内容单独展示。</view>
+      </view>
+      <button class="publish-btn" bindtap="publishConfession">发布</button>
+    </view>
+
+    <view wx:if="{{confessionPosts.length}}" class="confession-preview">
+      <post-card
+        wx:for="{{confessionPosts}}"
+        wx:key="_id"
+        post="{{item}}"
+        compact="{{true}}"
+        bind:open="openDetail"
+      />
+    </view>
+    <view wx:else class="confession-empty">还没有表白内容。</view>
+
+    <button class="btn-secondary more-btn" bindtap="openConfession">进入表白墙</button>
+  </view>
+
+  <view class="section-title">
+    <text>校园板块</text>
+  </view>
+
+  <view class="module-grid">
+    <view
+      wx:for="{{modules}}"
+      wx:key="title"
+      class="module-card panel"
+      data-url="{{item.url}}"
+      bindtap="openModule"
+    >
+      <view class="module-icon {{item.tone}}">{{item.icon}}</view>
+      <view class="module-copy">
+        <view class="module-title">{{item.title}}</view>
+        <view class="module-desc">{{item.desc}}</view>
+      </view>
+    </view>
+  </view>
+</view>

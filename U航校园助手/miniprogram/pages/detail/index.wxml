@@ -1,0 +1,62 @@
+<view class="page detail-page">
+  <view wx:if="{{post}}">
+    <post-card post="{{post}}" bind:like="likePost" />
+
+    <view class="detail-actions panel">
+      <button class="action-btn" bindtap="likePost">点赞 {{post.likeCount || 0}}</button>
+      <button class="action-btn" open-type="share">转发</button>
+      <button class="action-btn" loading="{{creatingPoster}}" bindtap="createPoster">海报</button>
+      <button class="action-btn" bindtap="reportPost">举报</button>
+      <button
+        wx:if="{{post.channel === 'lost_found' && !post.resolved}}"
+        class="action-btn"
+        bindtap="markResolved"
+      >
+        标记找回
+      </button>
+    </view>
+
+    <view wx:if="{{post.contact}}" class="contact panel">
+      <view class="contact-title">联系方式</view>
+      <view class="contact-text">{{post.contact}}</view>
+    </view>
+
+    <view class="section-title">
+      <text>评论</text>
+      <text class="muted small">{{comments.length}} 条</text>
+    </view>
+
+    <view wx:if="{{comments.length}}" class="comments panel">
+      <view wx:for="{{comments}}" wx:key="_id" class="comment-item">
+        <view class="comment-head">
+          <text>校园同学</text>
+          <view class="comment-head-right">
+            <text wx:if="{{item.status !== 'visible'}}" class="comment-status">{{item.status}}</text>
+            <text class="muted small">{{item.timeText}}</text>
+          </view>
+        </view>
+        <view class="comment-content">{{item.content}}</view>
+        <view class="comment-tools">
+          <text data-id="{{item._id}}" bindtap="reportComment">举报评论</text>
+          <text wx:if="{{item.reportCount}}">举报 {{item.reportCount}}</text>
+        </view>
+      </view>
+    </view>
+    <view wx:else class="empty">还没有评论。</view>
+
+    <view class="comment-box panel">
+      <input
+        class="comment-input"
+        maxlength="200"
+        placeholder="写一条公开评论"
+        value="{{commentText}}"
+        bindinput="onCommentInput"
+      />
+      <button class="send-btn" loading="{{sending}}" bindtap="addComment">发送</button>
+    </view>
+  </view>
+
+  <view wx:elif="{{!loading}}" class="empty">内容不存在或已被删除。</view>
+  <view wx:if="{{loading}}" class="loading">加载中...</view>
+  <canvas canvas-id="posterCanvas" class="poster-canvas"></canvas>
+</view>

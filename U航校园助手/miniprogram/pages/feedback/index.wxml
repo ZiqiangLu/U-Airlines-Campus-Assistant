@@ -1,0 +1,32 @@
+<view class="page feedback-page">
+  <view class="feedback-head panel">
+    <view class="title">写给开发者</view>
+    <view class="muted">功能建议、问题反馈、校园指南补充都可以写在这里。</view>
+  </view>
+
+  <view class="form-block">
+    <view class="form-label">建议信</view>
+    <textarea
+      class="textarea"
+      maxlength="800"
+      placeholder="请写下你的建议"
+      value="{{content}}"
+      data-field="content"
+      bindinput="onInput"
+    />
+  </view>
+
+  <view class="form-block">
+    <view class="form-label">联系方式</view>
+    <input
+      class="input"
+      maxlength="80"
+      placeholder="可选，方便需要时联系你"
+      value="{{contact}}"
+      data-field="contact"
+      bindinput="onInput"
+    />
+  </view>
+
+  <button class="btn-primary submit-btn" loading="{{submitting}}" bindtap="submit">提交建议</button>
+</view>

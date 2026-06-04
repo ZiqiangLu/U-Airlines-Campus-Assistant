@@ -1,0 +1,28 @@
+.feedback-page {
+  padding-bottom: 48rpx;
+}
+
+.feedback-head {
+  padding: 32rpx;
+}
+
+.feedback-head .muted {
+  margin-top: 12rpx;
+  font-size: 26rpx;
+  line-height: 1.55;
+}
+
+.form-block {
+  margin-top: 26rpx;
+}
+
+.form-label {
+  margin-bottom: 12rpx;
+  color: #17202f;
+  font-size: 27rpx;
+  font-weight: 700;
+}
+
+.submit-btn {
+  margin-top: 34rpx;
+}

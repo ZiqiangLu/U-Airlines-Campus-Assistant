@@ -1,0 +1,33 @@
+<view class="page verify-page">
+  <view class="verify-head panel">
+    <view class="title">校园认证</view>
+    <view class="muted">
+      只保存用于校内身份判断的最少信息。不要上传身份证、学生证照片或完整证件号。
+    </view>
+    <view class="status-badge">
+      {{verificationNames[user.verificationStatus || 'none']}}
+    </view>
+  </view>
+
+  <view class="form-block">
+    <view class="form-label">学校</view>
+    <input class="input" placeholder="填写本校名称" value="{{school}}" data-field="school" bindinput="onInput" />
+  </view>
+
+  <view class="form-block">
+    <view class="form-label">学院 / 专业</view>
+    <input class="input" placeholder="例如：计算机学院 / 软件工程" value="{{college}}" data-field="college" bindinput="onInput" />
+  </view>
+
+  <view class="form-block">
+    <view class="form-label">学号后四位或班级识别码</view>
+    <input class="input" maxlength="12" placeholder="只填后四位或可核验的短码" value="{{studentNoSuffix}}" data-field="studentNoSuffix" bindinput="onInput" />
+  </view>
+
+  <view class="form-block">
+    <view class="form-label">姓名提示</view>
+    <input class="input" maxlength="20" placeholder="可选，例如：张同学" value="{{realNameHint}}" data-field="realNameHint" bindinput="onInput" />
+  </view>
+
+  <button class="btn-primary submit-btn" loading="{{submitting}}" bindtap="submit">提交认证</button>
+</view>

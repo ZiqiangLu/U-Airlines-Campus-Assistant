@@ -1,0 +1,185 @@
+<view class="page publish-page">
+  <view class="publish-head panel">
+    <view class="title">{{channelName}}</view>
+    <view class="muted">{{placeholder}}</view>
+  </view>
+
+  <view wx:if="{{channel === 'square' && topic !== 'confession'}}" class="form-block">
+    <view class="form-label">话题</view>
+    <view class="chip-row">
+      <view
+        wx:for="{{topics}}"
+        wx:key="key"
+        class="chip {{topic === item.key ? 'active' : ''}}"
+        data-key="{{item.key}}"
+        bindtap="selectTopic"
+      >
+        {{item.name}}
+      </view>
+    </view>
+  </view>
+
+  <view wx:if="{{channel === 'lost_found'}}" class="form-block">
+    <view class="form-label">类型</view>
+    <view class="split-control panel">
+      <view
+        wx:for="{{lostTypes}}"
+        wx:key="key"
+        class="split-item {{type === item.key ? 'active' : ''}}"
+        data-key="{{item.key}}"
+        bindtap="selectType"
+      >
+        {{item.name}}
+      </view>
+    </view>
+  </view>
+
+  <view wx:if="{{channel === 'market'}}" class="form-block">
+    <view class="form-label">类型</view>
+    <view class="split-control panel">
+      <view
+        wx:for="{{marketTypes}}"
+        wx:key="key"
+        class="split-item {{type === item.key ? 'active' : ''}}"
+        data-key="{{item.key}}"
+        bindtap="selectType"
+      >
+        {{item.name}}
+      </view>
+    </view>
+  </view>
+
+  <view wx:if="{{channel === 'lost_found'}}" class="form-block">
+    <view class="form-label">分类</view>
+    <view class="chip-row">
+      <view
+        wx:for="{{lostCategories}}"
+        wx:key="key"
+        class="chip {{category === item.key ? 'active' : ''}}"
+        data-key="{{item.key}}"
+        bindtap="selectCategory"
+      >
+        {{item.name}}
+      </view>
+    </view>
+  </view>
+
+  <view wx:if="{{channel === 'market'}}" class="form-block">
+    <view class="form-label">分类</view>
+    <view class="chip-row">
+      <view
+        wx:for="{{marketCategories}}"
+        wx:key="key"
+        class="chip {{category === item.key ? 'active' : ''}}"
+        data-key="{{item.key}}"
+        bindtap="selectCategory"
+      >
+        {{item.name}}
+      </view>
+    </view>
+  </view>
+
+  <view wx:if="{{channel === 'partner'}}" class="form-block">
+    <view class="form-label">类型</view>
+    <view class="chip-row">
+      <view
+        wx:for="{{helpCategories}}"
+        wx:key="key"
+        class="chip {{category === item.key ? 'active' : ''}}"
+        data-key="{{item.key}}"
+        bindtap="selectCategory"
+      >
+        {{item.name}}
+      </view>
+    </view>
+  </view>
+
+  <view class="form-block" wx:if="{{channel !== 'square'}}">
+    <view class="form-label">标题</view>
+    <input
+      class="input"
+      maxlength="40"
+      placeholder="例如：黑色耳机盒 / 二手台灯 / 图书馆自习提醒"
+      value="{{title}}"
+      data-field="title"
+      bindinput="onInput"
+    />
+  </view>
+
+  <view class="form-block">
+    <view class="form-label">内容</view>
+    <textarea
+      class="textarea"
+      maxlength="800"
+      placeholder="{{placeholder}}"
+      value="{{content}}"
+      data-field="content"
+      bindinput="onInput"
+    />
+  </view>
+
+  <view class="form-block">
+    <view class="form-label">地点</view>
+    <input
+      class="input"
+      maxlength="40"
+      placeholder="可选，例如：二食堂 / 图书馆三楼"
+      value="{{location}}"
+      data-field="location"
+      bindinput="onInput"
+    />
+  </view>
+
+  <view class="form-block" wx:if="{{channel !== 'square'}}">
+    <view class="form-label">联系方式</view>
+    <input
+      class="input"
+      maxlength="60"
+      placeholder="建议写 QQ / 邮箱 / 公开留言，不要暴露敏感隐私"
+      value="{{contact}}"
+      data-field="contact"
+      bindinput="onInput"
+    />
+  </view>
+
+  <view class="form-block" wx:if="{{channel === 'market'}}">
+    <view class="form-label">价格</view>
+    <input
+      class="input"
+      maxlength="20"
+      placeholder="例如：20 元"
+      value="{{price}}"
+      data-field="price"
+      bindinput="onInput"
+    />
+  </view>
+
+  <view class="form-block">
+    <view class="form-label">图片</view>
+    <view class="image-picker">
+      <view
+        wx:for="{{images}}"
+        wx:key="*this"
+        class="image-cell"
+        data-index="{{index}}"
+        bindtap="removeImage"
+      >
+        <image src="{{item}}" mode="aspectFill" />
+        <view class="remove">删除</view>
+      </view>
+      <view wx:if="{{images.length < 6}}" class="image-add" bindtap="chooseImage">+</view>
+    </view>
+  </view>
+
+  <view class="anonymous-row panel">
+    <view>
+      <view class="form-label inline">隐藏身份展示</view>
+      <view class="muted small">后台仍会保留 OpenID 用于审核。</view>
+    </view>
+    <switch checked="{{anonymous}}" color="#1f7a5b" bindchange="onAnonymousChange" />
+  </view>
+
+  <button class="btn-primary submit-btn" loading="{{submitting}}" bindtap="submit">
+    提交审核
+  </button>
+</view>

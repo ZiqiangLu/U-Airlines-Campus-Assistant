@@ -1,0 +1,41 @@
+<view class="post-card panel" bindtap="onOpen">
+  <view class="post-head">
+    <view class="post-author">
+      <view class="avatar">校</view>
+      <view>
+        <view class="author-name">{{viewPost.anonymous ? '校园同学' : (viewPost.nickname || '校园同学')}}</view>
+        <view class="meta">{{viewPost.timeText || '刚刚'}} · {{viewPost.topicName || viewPost.categoryName || '校园'}}</view>
+      </view>
+    </view>
+    <view class="status-wrap">
+      <view wx:if="{{viewPost.pinned}}" class="status status-pin">置顶</view>
+      <view wx:if="{{viewPost.featured}}" class="status status-feature">精选</view>
+      <view wx:if="{{viewPost.status === 'pending'}}" class="status status-pending">待审核</view>
+      <view wx:elif="{{viewPost.resolved}}" class="status status-done">已解决</view>
+    </view>
+  </view>
+
+  <view wx:if="{{viewPost.title}}" class="post-title">{{viewPost.title}}</view>
+  <view wx:if="{{viewPost.price}}" class="post-price">{{viewPost.price}}</view>
+  <view class="post-content {{compact ? 'line-clamp' : ''}}">{{viewPost.content}}</view>
+
+  <view wx:if="{{viewPost.images && viewPost.images.length}}" class="image-grid">
+    <image
+      wx:for="{{viewPost.images}}"
+      wx:key="*this"
+      class="post-image"
+      src="{{item}}"
+      mode="aspectFill"
+    />
+  </view>
+
+  <view class="post-footer">
+    <view class="location" wx:if="{{viewPost.location}}">{{viewPost.location}}</view>
+    <view class="counts">
+      <view catchtap="onLike">赞 {{viewPost.likeCount || 0}}</view>
+      <view>评 {{viewPost.commentCount || 0}}</view>
+      <view wx:if="{{viewPost.reportCount}}">举 {{viewPost.reportCount}}</view>
+      <view wx:if="{{viewPost.viewCount}}">看 {{viewPost.viewCount}}</view>
+    </view>
+  </view>
+</view>

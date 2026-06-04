@@ -1,0 +1,46 @@
+<view class="page">
+  <view class="market-head panel">
+    <view>
+      <view class="title">物品交易</view>
+      <view class="muted small">出物和收物分开展示，平台不做支付担保。</view>
+    </view>
+    <button class="publish-btn" bindtap="goPublish">发布</button>
+  </view>
+
+  <view class="switch-row panel">
+    <view
+      wx:for="{{types}}"
+      wx:key="key"
+      class="switch-item {{activeType === item.key ? 'active' : ''}}"
+      data-key="{{item.key}}"
+      bindtap="selectType"
+    >
+      {{item.name}}
+    </view>
+  </view>
+
+  <view class="chip-row category-row">
+    <view
+      wx:for="{{categories}}"
+      wx:key="key"
+      class="chip {{activeCategory === item.key ? 'active' : ''}}"
+      data-key="{{item.key}}"
+      bindtap="selectCategory"
+    >
+      {{item.name}}
+    </view>
+  </view>
+
+  <view wx:if="{{posts.length}}">
+    <post-card
+      wx:for="{{posts}}"
+      wx:key="_id"
+      post="{{item}}"
+      compact="{{true}}"
+      bind:open="openDetail"
+    />
+  </view>
+
+  <view wx:elif="{{!loading}}" class="empty">暂时没有相关物品信息。</view>
+  <view wx:if="{{loading}}" class="loading">加载中...</view>
+</view>

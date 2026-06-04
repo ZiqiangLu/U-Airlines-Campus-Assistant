@@ -1,0 +1,50 @@
+{
+  "_id": "guides",
+  "groups": [
+    {
+      "title": "常用入口",
+      "items": [
+        {
+          "title": "中航大官网",
+          "desc": "学校官网、公开通知和院系入口",
+          "url": "https://www.cauc.edu.cn/"
+        },
+        {
+          "title": "本科生教育",
+          "desc": "教务处入口，选课、考试、培养相关信息",
+          "url": "https://www.cauc.edu.cn/jwc/"
+        },
+        {
+          "title": "网上服务大厅",
+          "desc": "师生事务、报修、校园服务统一入口",
+          "url": "https://i.cauc.edu.cn/"
+        }
+      ]
+    },
+    {
+      "title": "生活服务",
+      "items": [
+        {
+          "title": "虚拟校园",
+          "desc": "校内楼宇、道路和服务点位置查询",
+          "url": "https://map.cauc.edu.cn/"
+        }
+      ]
+    },
+    {
+      "title": "新生指南",
+      "items": [
+        {
+          "title": "招生信息网",
+          "desc": "本科招生、招录政策和入学信息",
+          "url": "https://www.cauc.edu.cn/zsb/"
+        },
+        {
+          "title": "校园卡",
+          "desc": "充值、挂失、补办说明",
+          "url": ""
+        }
+      ]
+    }
+  ]
+}

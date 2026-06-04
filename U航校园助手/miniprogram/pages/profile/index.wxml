@@ -1,0 +1,74 @@
+<view class="page">
+  <view class="profile-card panel">
+    <view class="profile-avatar">{{user.role === 'admin' ? '管' : '同'}}</view>
+    <view class="profile-info">
+      <view class="title">{{user.role === 'admin' ? '管理员' : '校园同学'}}</view>
+      <view class="muted small">前台隐藏身份展示，后台保留 OpenID 用于审核和封禁。</view>
+      <view class="verify-badge {{user.verificationStatus === 'verified' ? 'verified' : ''}}">
+        {{verificationNames[user.verificationStatus || 'none']}}
+      </view>
+    </view>
+  </view>
+
+  <view class="stats panel">
+    <view>
+      <view class="stat-value">{{stats.posts || 0}}</view>
+      <view class="stat-label">发布</view>
+    </view>
+    <view>
+      <view class="stat-value">{{stats.likes || 0}}</view>
+      <view class="stat-label">获赞</view>
+    </view>
+    <view>
+      <view class="stat-value">{{stats.pending || 0}}</view>
+      <view class="stat-label">待审</view>
+    </view>
+    <view>
+      <view class="stat-value">{{stats.pendingComments || 0}}</view>
+      <view class="stat-label">待审评</view>
+    </view>
+  </view>
+
+  <view class="action-list panel">
+    <view wx:if="{{!user.registered}}" class="action-item admin" bindtap="goRegister">
+      <text>立即注册</text>
+      <text class="muted">注册后使用全部功能</text>
+    </view>
+    <view class="action-item" bindtap="goVerify">
+      <text>校园认证</text>
+      <text class="muted">{{verificationNames[user.verificationStatus || 'none']}}</text>
+    </view>
+    <view class="action-item" bindtap="chooseGender">
+      <text>性别信息</text>
+      <text class="muted">{{user.gender ? genderNames[user.gender] : '未选择'}}</text>
+    </view>
+    <view class="action-item" bindtap="goPublishSquare">
+      <text>发布表白墙</text>
+      <text class="muted">表白 / 祝福 / 校园墙</text>
+    </view>
+    <view class="action-item" bindtap="goPublishLost">
+      <text>发布失物招领</text>
+      <text class="muted">丢失 / 拾到 / 找回</text>
+    </view>
+    <view class="action-item" bindtap="goPublishMarket">
+      <text>发布物品交易</text>
+      <text class="muted">出物 / 收物 / 不做担保</text>
+    </view>
+    <view class="action-item" bindtap="goPublishPartner">
+      <text>发布悬赏互助</text>
+      <text class="muted">代取 / 维修 / 学习互助</text>
+    </view>
+    <view class="action-item" bindtap="goFeedback">
+      <text>写给开发者</text>
+      <text class="muted">建议 / 报错 / 指南补充</text>
+    </view>
+    <view wx:if="{{user.role === 'admin'}}" class="action-item admin" bindtap="goAdmin">
+      <text>进入治理后台</text>
+      <text class="muted">帖子 / 评论 / 举报</text>
+    </view>
+  </view>
+
+  <view class="notice">
+    上线前请确认服务类目、隐私协议和 UGC 审核能力。所有用户提交内容应先审后展示。
+  </view>
+</view>

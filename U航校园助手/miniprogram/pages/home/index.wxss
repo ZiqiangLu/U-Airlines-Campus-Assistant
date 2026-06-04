@@ -1,0 +1,108 @@
+.confession-hero {
+  padding: 30rpx;
+  background: linear-gradient(135deg, #ffffff 0%, #fff7f4 54%, #f1fbf6 100%);
+}
+
+.hero-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24rpx;
+}
+
+.hero-sub {
+  margin-top: 12rpx;
+  color: #5d6878;
+  font-size: 26rpx;
+  line-height: 1.5;
+}
+
+.publish-btn {
+  flex: 0 0 auto;
+  min-width: 132rpx;
+  min-height: 76rpx;
+  color: #ffffff;
+  background: #1f7a5b;
+}
+
+.confession-preview {
+  margin-top: 24rpx;
+}
+
+.confession-preview post-card:last-child {
+  margin-bottom: 0;
+}
+
+.confession-empty {
+  margin-top: 24rpx;
+  padding: 34rpx 24rpx;
+  border: 1rpx dashed #e0c7c1;
+  border-radius: 8px;
+  color: #8a5a50;
+  background: rgba(255, 255, 255, 0.72);
+  font-size: 26rpx;
+  text-align: center;
+}
+
+.more-btn {
+  margin-top: 22rpx;
+}
+
+.module-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 18rpx;
+}
+
+.module-card {
+  display: flex;
+  align-items: center;
+  gap: 18rpx;
+  min-height: 150rpx;
+  padding: 24rpx;
+}
+
+.module-icon {
+  flex: 0 0 auto;
+  width: 72rpx;
+  height: 72rpx;
+  border-radius: 50%;
+  color: #ffffff;
+  background: #32445f;
+  font-size: 30rpx;
+  font-weight: 700;
+  line-height: 72rpx;
+  text-align: center;
+}
+
+.module-icon.help {
+  background: #a04612;
+}
+
+.module-icon.market {
+  background: #8a5a08;
+}
+
+.module-icon.chat {
+  background: #5b5f97;
+}
+
+.module-title {
+  color: #17202f;
+  font-size: 29rpx;
+  font-weight: 700;
+}
+
+.module-desc {
+  margin-top: 8rpx;
+  color: #697386;
+  font-size: 23rpx;
+  line-height: 1.4;
+}
+
+.loading {
+  padding: 28rpx 0;
+  color: #697386;
+  font-size: 24rpx;
+  text-align: center;
+}

@@ -1,0 +1,47 @@
+{
+  "pages": [
+    "pages/home/index",
+    "pages/confession/index",
+    "pages/lost/index",
+    "pages/help/index",
+    "pages/market/index",
+    "pages/chat/index",
+    "pages/guide/index",
+    "pages/profile/index",
+    "pages/register/index",
+    "pages/feedback/index",
+    "pages/publish/index",
+    "pages/detail/index",
+    "pages/verify/index",
+    "pages/admin/index"
+  ],
+  "window": {
+    "navigationBarTitleText": "航校广场",
+    "navigationBarBackgroundColor": "#ffffff",
+    "navigationBarTextStyle": "black",
+    "backgroundColor": "#f6f7fb",
+    "backgroundTextStyle": "dark"
+  },
+  "tabBar": {
+    "color": "#697386",
+    "selectedColor": "#1f7a5b",
+    "backgroundColor": "#ffffff",
+    "borderStyle": "white",
+    "list": [
+      {
+        "pagePath": "pages/home/index",
+        "text": "信息"
+      },
+      {
+        "pagePath": "pages/guide/index",
+        "text": "指南"
+      },
+      {
+        "pagePath": "pages/profile/index",
+        "text": "我的"
+      }
+    ]
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

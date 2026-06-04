@@ -1,0 +1,26 @@
+.confession-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24rpx;
+  padding: 30rpx;
+}
+
+.publish-btn {
+  flex: 0 0 auto;
+  min-width: 132rpx;
+  min-height: 76rpx;
+  color: #ffffff;
+  background: #1f7a5b;
+}
+
+.list {
+  margin-top: 22rpx;
+}
+
+.loading {
+  padding: 28rpx 0;
+  color: #697386;
+  font-size: 24rpx;
+  text-align: center;
+}

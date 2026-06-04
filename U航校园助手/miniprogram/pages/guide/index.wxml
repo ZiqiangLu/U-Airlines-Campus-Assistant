@@ -1,0 +1,132 @@
+<view class="page">
+  <view class="guide-hero panel">
+    <view class="title">校园指南</view>
+    <view class="muted">常用入口、生活服务和公开通知只展示摘要与官方链接，点击后复制到浏览器查看。</view>
+  </view>
+
+  <view class="section-title">
+    <text>中航大动态</text>
+    <text wx:if="{{noticesUpdatedAtText}}" class="section-extra">更新 {{noticesUpdatedAtText}}</text>
+  </view>
+
+  <block wx:if="{{noticeGroups.length}}">
+    <view wx:for="{{noticeGroups}}" wx:key="title" class="notice-group">
+      <view class="subsection-title">{{item.title}}</view>
+      <view class="notice-list panel">
+        <view
+          wx:for="{{item.items}}"
+          wx:for-item="notice"
+          wx:key="url"
+          class="notice-item"
+          data-url="{{notice.url}}"
+          data-title="{{notice.title}}"
+          bindtap="openNotice"
+        >
+          <view class="notice-main">
+            <view class="notice-title">{{notice.title}}</view>
+            <view class="notice-meta">{{notice.meta}}</view>
+          </view>
+          <view class="guide-action">{{notice.isPdf ? '复制PDF' : '复制'}}</view>
+        </view>
+      </view>
+    </view>
+  </block>
+
+  <view class="empty panel" wx:else>
+    <view class="empty-title">暂未缓存公开通知</view>
+    <view class="empty-desc">部署 spider 云函数并手动运行一次后，这里会按来源模块展示最近公开信息。</view>
+  </view>
+
+  <view class="section-title">
+    <text>快递打印榜</text>
+    <text class="section-extra">按点赞排序</text>
+  </view>
+
+  <view class="service-panel panel">
+    <view class="service-tabs">
+      <view
+        wx:for="{{serviceTabs}}"
+        wx:key="key"
+        class="service-tab {{serviceType === item.key ? 'active' : ''}}"
+        data-type="{{item.key}}"
+        bindtap="switchServiceType"
+      >
+        {{item.name}}
+      </view>
+    </view>
+
+    <view class="service-form">
+      <input
+        class="service-input"
+        value="{{serviceForm.title}}"
+        data-field="title"
+        bindinput="updateServiceForm"
+        placeholder="{{serviceTypeName}}名称"
+      />
+      <input
+        class="service-input"
+        value="{{serviceForm.location}}"
+        data-field="location"
+        bindinput="updateServiceForm"
+        placeholder="位置，例如北院快递中心 / 南院某楼旁"
+      />
+      <textarea
+        class="service-textarea"
+        value="{{serviceForm.desc}}"
+        data-field="desc"
+        bindinput="updateServiceForm"
+        maxlength="200"
+        placeholder="营业时间、价格、取件规则或推荐理由"
+      />
+      <input
+        class="service-input"
+        value="{{serviceForm.contact}}"
+        data-field="contact"
+        bindinput="updateServiceForm"
+        placeholder="可选：联系方式或补充说明"
+      />
+      <button class="service-submit" loading="{{submittingService}}" bindtap="submitService">提交{{serviceTypeName}}</button>
+    </view>
+  </view>
+
+  <view class="service-list panel" wx:if="{{currentServices.length}}">
+    <view wx:for="{{currentServices}}" wx:key="_id" class="service-item">
+      <view class="service-main">
+        <view class="service-title">{{item.title}}</view>
+        <view class="service-desc">{{item.location}}</view>
+        <view class="service-desc">{{item.desc}}</view>
+        <view wx:if="{{item.contact}}" class="service-meta">{{item.contact}}</view>
+      </view>
+      <view class="like-button" data-id="{{item._id}}" bindtap="likeService">赞 {{item.likeText}}</view>
+    </view>
+  </view>
+
+  <view class="empty panel" wx:else>
+    <view class="empty-title">还没有{{serviceTypeName}}信息</view>
+    <view class="empty-desc">你可以提交第一条，后续会按点赞量靠前展示。</view>
+  </view>
+
+  <view wx:for="{{groups}}" wx:key="title" class="guide-group">
+    <view class="section-title">
+      <text>{{item.title}}</text>
+    </view>
+
+    <view class="guide-list panel">
+      <view
+        wx:for="{{item.items}}"
+        wx:for-item="guide"
+        wx:key="title"
+        class="guide-item"
+        data-url="{{guide.url}}"
+        data-title="{{guide.title}}"
+        bindtap="openLink"
+      >
+        <view class="guide-main">
+          <view class="guide-title">{{guide.title}}</view>
+          <view class="guide-desc">{{guide.desc}}</view>
+        </view>
+        <view class="guide-action">{{guide.url ? '复制' : '待补充'}}</view>
+      </view>
+    </view>
+  </view>
+</view>

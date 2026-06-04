@@ -1,0 +1,122 @@
+<view class="page">
+  <view class="admin-head panel">
+    <view class="title">治理后台</view>
+    <view class="muted small">处理待审、举报、认证和封禁。高风险内容先删除，再看是否封禁用户。</view>
+  </view>
+
+  <view class="chip-row tab-row">
+    <view
+      wx:for="{{tabs}}"
+      wx:key="key"
+      class="chip {{activeKey === item.key ? 'active' : ''}}"
+      data-key="{{item.key}}"
+      bindtap="selectTab"
+    >
+      {{item.name}}
+    </view>
+  </view>
+
+  <view wx:if="{{activeTarget === 'posts' && items.length}}">
+    <view wx:for="{{items}}" wx:key="_id" class="audit-card panel">
+      <view class="audit-meta">
+        <text>{{item.channelText}} · {{item.statusText}} · {{item.timeText}}</text>
+        <text wx:if="{{item.reportCount}}">举报 {{item.reportCount}}</text>
+      </view>
+      <view class="audit-title" bindtap="openDetail" data-id="{{item._id}}">
+        {{item.title || '校园信息'}}
+      </view>
+      <view class="audit-content" bindtap="openDetail" data-id="{{item._id}}">
+        {{item.content}}
+      </view>
+      <view class="audit-tags">
+        <text wx:if="{{item.pinned}}">置顶</text>
+        <text wx:if="{{item.featured}}">精选</text>
+        <text wx:if="{{item.resolved}}">已解决</text>
+        <text>{{item.authorVerificationStatus === 'verified' ? '认证用户' : '未认证'}}</text>
+      </view>
+      <view class="audit-actions">
+        <button class="audit-btn pass" data-id="{{item._id}}" data-action="approve" bindtap="auditPost">通过</button>
+        <button class="audit-btn reject" data-id="{{item._id}}" data-action="reject" bindtap="auditPost">拒绝</button>
+        <button class="audit-btn delete" data-id="{{item._id}}" data-action="delete" bindtap="auditPost">删除</button>
+        <button class="audit-btn minor" data-id="{{item._id}}" data-action="{{item.pinned ? 'unpin' : 'pin'}}" bindtap="auditPost">
+          {{item.pinned ? '取消置顶' : '置顶'}}
+        </button>
+        <button class="audit-btn minor" data-id="{{item._id}}" data-action="{{item.featured ? 'unfeature' : 'feature'}}" bindtap="auditPost">
+          {{item.featured ? '取消精选' : '精选'}}
+        </button>
+      </view>
+    </view>
+  </view>
+
+  <view wx:elif="{{activeTarget === 'comments' && items.length}}">
+    <view wx:for="{{items}}" wx:key="_id" class="audit-card panel">
+      <view class="audit-meta">
+        <text>{{item.statusText}} · {{item.timeText}}</text>
+        <text wx:if="{{item.reportCount}}">举报 {{item.reportCount}}</text>
+      </view>
+      <view class="audit-content">{{item.content}}</view>
+      <view class="audit-actions">
+        <button class="audit-btn pass" data-id="{{item._id}}" data-action="approve" bindtap="auditComment">通过</button>
+        <button class="audit-btn reject" data-id="{{item._id}}" data-action="reject" bindtap="auditComment">拒绝</button>
+        <button class="audit-btn delete" data-id="{{item._id}}" data-action="delete" bindtap="auditComment">删除</button>
+        <button class="audit-btn minor" data-id="{{item.postId}}" bindtap="openDetail">看原帖</button>
+      </view>
+    </view>
+  </view>
+
+  <view wx:elif="{{activeTarget === 'verifications' && items.length}}">
+    <view wx:for="{{items}}" wx:key="_id" class="audit-card panel">
+      <view class="audit-meta">
+        <text>{{item.verificationText}} · {{item.timeText}}</text>
+        <text>{{item.statusText}}</text>
+      </view>
+      <view class="audit-title">{{item.school || '未填学校'}}</view>
+      <view class="audit-content">
+        {{item.college || '未填学院'}} · {{item.studentNoSuffix || '未填识别码'}} · {{item.realNameHint || '未填姓名提示'}}
+      </view>
+      <view class="audit-actions">
+        <button class="audit-btn pass" data-id="{{item._id}}" data-action="approve" bindtap="auditVerification">通过认证</button>
+        <button class="audit-btn reject" data-id="{{item._id}}" data-action="reject" bindtap="auditVerification">拒绝</button>
+        <button class="audit-btn delete" data-id="{{item._id}}" data-status="banned" bindtap="setUserStatus">封禁</button>
+      </view>
+    </view>
+  </view>
+
+  <view wx:elif="{{activeTarget === 'users' && items.length}}">
+    <view wx:for="{{items}}" wx:key="_id" class="audit-card panel">
+      <view class="audit-meta">
+        <text>{{item.statusText}} · {{item.verificationText}}</text>
+        <text>{{item.timeText}}</text>
+      </view>
+      <view class="audit-title">{{item.nickname || item.school || '校园同学'}}</view>
+      <view class="audit-content">
+        发布 {{item.postCount || 0}} · 获赞 {{item.likeReceivedCount || 0}} · {{item.college || '未填学院'}}
+      </view>
+      <view class="audit-actions">
+        <button
+          wx:if="{{item.status !== 'banned'}}"
+          class="audit-btn delete"
+          data-id="{{item._id}}"
+          data-status="banned"
+          bindtap="setUserStatus"
+        >
+          封禁
+        </button>
+        <button
+          wx:else
+          class="audit-btn pass"
+          data-id="{{item._id}}"
+          data-status="active"
+          bindtap="setUserStatus"
+        >
+          解封
+        </button>
+        <button class="audit-btn pass" data-id="{{item._id}}" data-action="approve" bindtap="auditVerification">通过认证</button>
+        <button class="audit-btn reject" data-id="{{item._id}}" data-action="reset" bindtap="auditVerification">重置认证</button>
+      </view>
+    </view>
+  </view>
+
+  <view wx:elif="{{!loading}}" class="empty">当前没有需要处理的内容。</view>
+  <view wx:if="{{loading}}" class="loading">加载中...</view>
+</view>

@@ -1,0 +1,33 @@
+<view class="page register-page">
+  <view class="register-head panel">
+    <view class="title">注册后使用</view>
+    <view class="muted">
+      完成基础资料后才能查看、发布、抽签、举报和评论。资料仅用于校内内容管理与可见度筛选。
+    </view>
+  </view>
+
+  <view class="form-block">
+    <view class="form-label">昵称</view>
+    <input
+      class="input"
+      maxlength="24"
+      placeholder="例如：航校同学"
+      value="{{nickname}}"
+      bindinput="onInput"
+    />
+  </view>
+
+  <view class="form-block">
+    <view class="form-label">性别</view>
+    <view class="gender-grid">
+      <view class="gender-item {{gender === 'male' ? 'active' : ''}}" data-gender="male" bindtap="chooseGender">
+        男生
+      </view>
+      <view class="gender-item {{gender === 'female' ? 'active' : ''}}" data-gender="female" bindtap="chooseGender">
+        女生
+      </view>
+    </view>
+  </view>
+
+  <button class="btn-primary submit-btn" loading="{{submitting}}" bindtap="submit">完成注册</button>
+</view>

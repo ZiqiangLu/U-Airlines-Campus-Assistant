@@ -1,0 +1,38 @@
+.verify-page {
+  padding-bottom: 48rpx;
+}
+
+.verify-head {
+  padding: 32rpx;
+}
+
+.verify-head .muted {
+  margin-top: 12rpx;
+  font-size: 26rpx;
+  line-height: 1.55;
+}
+
+.status-badge {
+  display: inline-flex;
+  margin-top: 18rpx;
+  padding: 10rpx 16rpx;
+  border-radius: 999rpx;
+  color: #1f7a5b;
+  background: #e8f5ef;
+  font-size: 24rpx;
+}
+
+.form-block {
+  margin-top: 26rpx;
+}
+
+.form-label {
+  margin-bottom: 12rpx;
+  color: #17202f;
+  font-size: 27rpx;
+  font-weight: 700;
+}
+
+.submit-btn {
+  margin-top: 34rpx;
+}

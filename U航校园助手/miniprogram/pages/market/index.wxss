@@ -1,0 +1,47 @@
+.market-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24rpx;
+  padding: 30rpx;
+}
+
+.publish-btn {
+  flex: 0 0 auto;
+  min-width: 132rpx;
+  min-height: 76rpx;
+  color: #ffffff;
+  background: #1f7a5b;
+}
+
+.switch-row {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8rpx;
+  margin: 22rpx 0;
+  padding: 8rpx;
+}
+
+.switch-item {
+  padding: 20rpx 0;
+  border-radius: 6px;
+  color: #5d6878;
+  font-size: 28rpx;
+  text-align: center;
+}
+
+.switch-item.active {
+  color: #ffffff;
+  background: #32445f;
+}
+
+.category-row {
+  margin: 24rpx 0 18rpx;
+}
+
+.loading {
+  padding: 28rpx 0;
+  color: #697386;
+  font-size: 24rpx;
+  text-align: center;
+}
